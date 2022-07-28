@@ -1,0 +1,10 @@
+<div class="px-4 py-2 mb-2 rounded">
+	<h4 class="fst-italic">Niveaux</h4>
+	<ol class="list-unstyle mb-0">
+		{% for niveau in niveaux %}
+			<li>
+				<a class="text-decoration-none" href="{{ path('app_niveaux_show', {'slug': niveau.slug}) }}">{{niveau.designation }}</a>
+			</li>
+		{% endfor %}
+	</ol>
+</div>

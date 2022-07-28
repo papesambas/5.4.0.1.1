@@ -1,0 +1,64 @@
+{% extends 'blog/base.html.twig' %}
+
+{% block title %}
+	{{publication.titre}}
+{% endblock %}
+
+{% block body %}
+	<h1>Publications</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ publication.id }}</td>
+			</tr>
+			<tr>
+				<th>Titre</th>
+				<td>{{ publication.titre }}</td>
+			</tr>
+			<tr>
+				<th>Slug</th>
+				<td>{{ publication.slug }}</td>
+			</tr>
+			<tr>
+				<th>Contenu</th>
+				<td>{{ publication.contenu }}</td>
+			</tr>
+			<tr>
+				<th>FeaturedText</th>
+				<td>{{ publication.featuredText }}</td>
+			</tr>
+			<tr>
+				<th>IsActive</th>
+				<td>{{ publication.isActive ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>IsPublished</th>
+				<td>{{ publication.isPublished ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>PublishedAt</th>
+				<td>{{ publication.publishedAt ? publication.publishedAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Favoris</th>
+				<td>{{ publication.favoris ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>CreatedAt</th>
+				<td>{{ publication.createdAt ? publication.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>UpdatedAt</th>
+				<td>{{ publication.updatedAt ? publication.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_publications_index') }}">back to list</a>
+
+	<a href="{{ path('app_publications_edit', {'slug': publication.slug}) }}">edit</a>
+
+	{{ include('publications/_delete_form.html.twig') }}
+{% endblock %}

@@ -98,7 +98,9 @@ class Categories
     }
 
     /**
-     * @return Collection<int, Niveaux>
+     * Undocumented function
+     *
+     * @return Collection
      */
     public function getNiveau(): Collection
     {

@@ -1,0 +1,6 @@
+{% set categorie_show = path('app_categories_show', {'slug': categorie.slug})  %}
+<article>
+	<div class="row px-4">
+		<a href="{{ categorie_show }}" class="text-decoration-none">{{categorie.nom}}</a>
+	</div>
+</article>

@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Categories;
+use App\Entity\Niveaux;
 use App\Form\CategoriesType;
 use App\Repository\CategoriesRepository;
+use App\Repository\NiveauxRepository;
+use App\Repository\PublicationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,10 +44,21 @@ class CategoriesController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_categories_show', methods: ['GET'])]
-    public function show(Categories $category): Response
+    public function show(?string $p_id, ?string $c_id, ?Categories $category, PublicationsRepository $publicationsRepos, CategoriesRepository $categoriesRepos, NiveauxRepository $niveauxRepos): Response
     {
+        if (!$category) {
+            return $this->redirectToRoute('app_blog');
+        };
+        $category = $categoriesRepos->findNiveau($category);
+
+        $publication = $publicationsRepos->findCategorie($category);
+        //dd($publication);
+
         return $this->render('categories/show.html.twig', [
             'category' => $category,
+            'categories' => $category,
+            'publications' => $publication,
+            'niveau' => $niveauxRepos->findAll(),
         ]);
     }
 

@@ -1,24 +1,24 @@
 {% extends 'blog/base.html.twig' %}
 
-{% block title %}Niveaux
+{% block title %}
+	{{cycle.designation}}
 {% endblock %}
 
 {% block body %}
-	<div class="container-fluid mx-3 md-2">
+	<div class="container-fluid mx-3">
 		<div class="row">
 			<div class="col-md-3" style="min-height:36rem;">
 				<div class="position-sticky " style="top: 2rem ;">
 					{% include "widget/about.html.twig" %}
-					{% include "widget/categories.html.twig" %}
+					{% include "widget/niveaux.html.twig" %}
 					<div id="niveau-liste">
-						{% include "categories/liste.html.twig" with {categories: niveau.categories, leftcol:4, rightcol:8} %}
+						{% include "niveaux/liste.html.twig" with {niveaux:cycle.niveauxes, leftcol:4, rightcol:8} %}
 					</div>
 				</div>
 			</div>
 			<div class="col-md-9">
-				<h3 class="pb-4 px-4 mb-4 fst-italic border-bottom">{{niveau.designation}}</h3>
+				<h3 class="pb-4 px-4 mb-4 fst-italic border-bottom">{{cycle.designation}}</h3>
 			</div>
 		</div>
 	</div>
-
 {% endblock %}

@@ -41,8 +41,12 @@ class PublicationsController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_publications_show', methods: ['GET'])]
-    public function show(Publications $publication): Response
+    public function show(?Publications $publication): Response
     {
+        if (!$publication) {
+            return $$this->redirectToRoute('app_blog');
+        }
+
         return $this->render('publications/show.html.twig', [
             'publication' => $publication,
         ]);

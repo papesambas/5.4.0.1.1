@@ -33,7 +33,7 @@ class categoriesEntityListener
 
     private function getCatégoriesSlug(Categories $categories): string
     {
-        $slug = mb_strtolower($categories->getNom() . '-' . $categories->getCouleur(), 'UTF-8');
+        $slug = mb_strtolower($categories->getNom() . '-' . $categories->getNiveau(), 'UTF-8');
         return $this->Slugger->slug($slug);
     }
 }

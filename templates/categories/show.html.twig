@@ -1,38 +1,37 @@
 {% extends 'blog/base.html.twig' %}
 
-{% block title %}Categories{% endblock %}
+{% block title %}
+	{% for categorie in categories %}
+		{{categorie.nom}}
+
+	{% endfor %}
+{% endblock %}
 
 {% block body %}
-    <h1>Categories</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3" style="min-height:36rem;">
+				<div class="position-sticky " style="top: 2rem ;">
+					{% include "widget/about.html.twig" %}
+					{% include "widget/categories.html.twig" %}
+				</div>
+			</div>
+			<div class="col-md-9">
+				<h3 class="pb-4 px-4 mb-4 fst-italic border-bottom">
+					{% for categorie in categories %}
+						{{categorie.nom}}
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ category.nom }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ category.slug }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ category.description }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td>{{ category.couleur }}</td>
-            </tr>
-        </tbody>
-    </table>
+					{% endfor %}
+				</h3>
+				<div id="niveau-liste">
+					{% for categorie in categories %}
+						{% include "publications/liste.html.twig" with {categorie} %}
 
-    <a href="{{ path('app_categories_index') }}">back to list</a>
+					{% endfor %}
+				</div>
 
-    <a href="{{ path('app_categories_edit', {'slug': category.slug}) }}">edit</a>
+			</div>
+		</div>
+	</div>
 
-    {{ include('categories/_delete_form.html.twig') }}
 {% endblock %}

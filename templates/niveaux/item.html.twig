@@ -1,0 +1,6 @@
+{% set niveau_show = path('app_niveaux_show', {'slug': niveau.slug})  %}
+<article>
+	<div class="row px-4">
+		<a href="{{ niveau_show }}" class="text-decoration-none">{{niveau.designation}}</a>
+	</div>
+</article>

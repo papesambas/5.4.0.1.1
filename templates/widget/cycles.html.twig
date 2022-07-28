@@ -1,0 +1,11 @@
+<div class="px-4 py-2 mb-2 rounded">
+	<h4 class="fst-italic">Cycles</h4>
+	<ol class="list-unstyle mb-0">
+		{% for cycle in cycles %}
+			<li>
+				<a class="text-decoration-none" href=" {{ path('app_cycles_show', {'id': cycle.id} ) }}">{{cycle.designation}}</a>
+			</li>
+
+		{% endfor %}
+	</ol>
+</div>
