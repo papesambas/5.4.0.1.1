@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Blog -
-			{% block title %}Blog -
+			{% block title %}Acceuil
 			{% endblock %}
 		</title>
 		<link
@@ -27,12 +27,11 @@
 				</a>
 
 				<ul class="nav nav-pills align-items-center">
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="#">S'inscrire</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link text-dark" href="#">Se Connecter</a>
-					</li>
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						{% include "widget/cycles.html.twig" %}
+
+					{% endif %}
+
 				</ul>
 			</header>
 		</div>

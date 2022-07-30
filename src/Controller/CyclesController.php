@@ -43,12 +43,13 @@ class CyclesController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_cycles_show', methods: ['GET'])]
-    public function show(Cycles $cycle, PublicationsRepository $publicationsRepos, NiveauxRepository $niveauxRepos): Response
+    public function show(Cycles $cycle, CyclesRepository $cyclesRepos, PublicationsRepository $publicationsRepos, NiveauxRepository $niveauxRepos): Response
     {
         return $this->render('cycles/show.html.twig', [
             'publications' => $publicationsRepos->findAll(),
             'niveaux' => $niveauxRepos->find($cycle),
             'cycle' => $cycle,
+            'cycles' => $cyclesRepos->findAll(),
         ]);
     }
 

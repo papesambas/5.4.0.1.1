@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Publications;
 use App\Form\PublicationsType;
+use App\Repository\CyclesRepository;
 use App\Repository\PublicationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,7 +42,7 @@ class PublicationsController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_publications_show', methods: ['GET'])]
-    public function show(?Publications $publication): Response
+    public function show(?Publications $publication, CyclesRepository $cyclesRepos): Response
     {
         if (!$publication) {
             return $$this->redirectToRoute('app_blog');
@@ -49,6 +50,7 @@ class PublicationsController extends AbstractController
 
         return $this->render('publications/show.html.twig', [
             'publication' => $publication,
+            'cycles' => $cyclesRepos->findAll(),
         ]);
     }
 

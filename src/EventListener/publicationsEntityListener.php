@@ -21,13 +21,13 @@ class publicationsEntityListener
     public function prePersist(Publications $publications, LifecycleEventArgs $arg): void
     {
         $user = $this->Securty->getUser();
-        /*if ($user === null) {
+        if ($user === null) {
             throw new \LogicException('User cannot be null here ...');
-        }*/
+        }
 
         $author = $user;
         $publications
-            //->setAuthor($author)
+            ->setAuthor($author)
             ->setCreatedAt(new \DateTimeImmutable('now'))
             ->setSlug($this->getPublicationsSlug($publications))
             ->setPublishedAt(new \DateTimeImmutable('now'));

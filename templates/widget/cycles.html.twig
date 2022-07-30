@@ -1,4 +1,4 @@
-<div class="px-4 py-2 mb-2 rounded">
+{# <div class="px-4 py-2 mb-2 rounded">
 	<h4 class="fst-italic">Cycles</h4>
 	<ol class="list-unstyle mb-0">
 		{% for cycle in cycles %}
@@ -8,4 +8,12 @@
 
 		{% endfor %}
 	</ol>
-</div>
+</div> #}
+<ul class="nav nav-pills align-items-center">
+	{% for cycle in cycles %}
+		<li>
+			<a class="text-decoration-none px-2" href=" {{ path('app_cycles_show', {'id': cycle.id} ) }}">{{cycle.designation}}</a>
+		</li>
+
+	{% endfor %}
+</ul>

@@ -6,6 +6,7 @@ use App\Entity\Categories;
 use App\Entity\Niveaux;
 use App\Form\CategoriesType;
 use App\Repository\CategoriesRepository;
+use App\Repository\CyclesRepository;
 use App\Repository\NiveauxRepository;
 use App\Repository\PublicationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -44,7 +45,7 @@ class CategoriesController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_categories_show', methods: ['GET'])]
-    public function show(?string $p_id, ?string $c_id, ?Categories $category, PublicationsRepository $publicationsRepos, CategoriesRepository $categoriesRepos, NiveauxRepository $niveauxRepos): Response
+    public function show(CyclesRepository $cyclesRepos, ?Categories $category, PublicationsRepository $publicationsRepos, CategoriesRepository $categoriesRepos, NiveauxRepository $niveauxRepos): Response
     {
         if (!$category) {
             return $this->redirectToRoute('app_blog');
@@ -59,6 +60,7 @@ class CategoriesController extends AbstractController
             'categories' => $category,
             'publications' => $publication,
             'niveau' => $niveauxRepos->findAll(),
+            'cycles' => $cyclesRepos->findAll(),
         ]);
     }
 

@@ -33,7 +33,7 @@ class Publications implements TimestampedInterface
     private ?bool $isActive = false;
 
     #[ORM\Column]
-    private ?bool $isPublished = null;
+    private ?bool $isPublished = false;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $publishedAt = null;

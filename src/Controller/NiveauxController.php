@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Niveaux;
 use App\Form\NiveauxType;
 use App\Repository\CategoriesRepository;
+use App\Repository\CyclesRepository;
 use App\Repository\NiveauxRepository;
 use App\Repository\PublicationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,12 +44,13 @@ class NiveauxController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'app_niveaux_show', methods: ['GET'])]
-    public function show(Niveaux $niveau, PublicationsRepository $publicationsRepos, CategoriesRepository $categoriesRepos): Response
+    public function show(Niveaux $niveau, CyclesRepository $cyclesRepos, PublicationsRepository $publicationsRepos, CategoriesRepository $categoriesRepos): Response
     {
         return $this->render('niveaux/show.html.twig', [
             'niveau' => $niveau,
             'publications' => $publicationsRepos,
             'categories' => $categoriesRepos,
+            'cycles' => $cyclesRepos->findAll(),
         ]);
     }
 

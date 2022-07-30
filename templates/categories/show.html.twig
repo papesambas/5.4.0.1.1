@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container">
+	<div class="container-fluid mx-4">
 		<div class="row">
 			<div class="col-md-3" style="min-height:36rem;">
 				<div class="position-sticky " style="top: 2rem ;">
@@ -25,7 +25,8 @@
 				</h3>
 				<div id="niveau-liste">
 					{% for categorie in categories %}
-						{% include "publications/liste.html.twig" with {categorie} %}
+
+						{% include "publications/liste.html.twig" with {publications: categorie.publications} %}
 
 					{% endfor %}
 				</div>

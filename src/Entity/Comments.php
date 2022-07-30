@@ -24,7 +24,7 @@ class Comments
     private ?bool $rgpd = null;
 
     #[ORM\Column]
-    private ?bool $isActif = null;
+    private ?bool $isActif = True;
 
     #[ORM\ManyToOne(inversedBy: 'comments')]
     #[ORM\JoinColumn(nullable: false)]

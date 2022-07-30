@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Users;
 use App\Entity\Categories;
 use App\Entity\Classes;
+use App\Entity\Comments;
 use App\Entity\Cycles;
 use App\Entity\Enseignements;
 use App\Entity\Etablissements;
@@ -77,5 +78,6 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Toutes les catégories', 'fas fa-list', Categories::class),
             MenuItem::linkToCrud('Ajouter une Catégorie', 'fas fa-plus', Categories::class)->setAction(Crud::PAGE_NEW),
         ]);
+        yield MenuItem::linkToCrud('Commentaires', 'fas fa-comments', Comments::class);
     }
 }

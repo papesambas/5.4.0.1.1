@@ -21,10 +21,10 @@ class categoriesEntityListener
 
     public function prePersist(Categories $categories, LifecycleEventArgs $arg): void
     {
-        /*$user = $this->Securty->getUser();
+        $user = $this->Securty->getUser();
         if ($user === null) {
             throw new \LogicException('User cannot be null here ...');
-        }*/
+        }
 
         $categories
             //->setCreatedAt(new \DateTimeImmutable('now'))

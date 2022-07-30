@@ -1,14 +1,14 @@
 {% set publication_show = path('app_publications_show', {'slug': publication.slug})  %}
 <article>
 	<div class="row">
-		<div class="col-md-{{ leftcol ?? 5}}">
+		<div class="col-md-{{ leftcol ?? 3}}">
 			{% if publication.featuredImage %}
 				<a href="{{ publication_show }}">
 					<img src="/uploads/images/{{publication.featuredImage.fileName}}" alt="{{publication.featuredImage.altText}}" loading="lazy" width="350" heigth="250">
 				</a>
 			{% endif %}
 		</div>
-		<div class="col-md-{{ rightcol ?? 7}}">
+		<div class="col-md-{{ rightcol ?? 9}}">
 			<h4>
 				<a href="{{ publication_show }}" class="text-decoration-none">{{publication.titre}}</a>
 			</h4>
@@ -18,7 +18,7 @@
 			</p>
 			{{publication.featuredText ?: publication.contenu|u.truncate(150,'...',false)|raw }}
 
-			{# {{u.truncate(50,'...',false)|raw }} #}
+			<hr>
 		</div>
 	</div>
 </article>

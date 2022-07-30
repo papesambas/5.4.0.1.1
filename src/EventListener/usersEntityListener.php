@@ -27,11 +27,11 @@ class usersEntityListener
 
         $users
             ->setIscreatedAt(new \DateTimeImmutable('now'));
-        //->setCreatedAt(new \DateTimeImmutable('now'));
-        //->setSlug($this->getClassesSlug($classes));
+        //->setCreatedAt(new \DateTimeImmutable('now'))
+        //->setSlug($this->getClassesSlug($classes))
     }
 
-    /* private function getClassesSlug(Classes $classes): string
+    /*private function getClassesSlug(Classes $classes): string
     {
         $slug = mb_strtolower($classes->getDesignation(), 'UTF-8');
         return $this->Slugger->slug($slug);
